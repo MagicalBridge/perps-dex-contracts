@@ -6,7 +6,9 @@
   "scripts": {
     "build": "hardhat build",
     "clean": "hardhat clean",
-    "flatten": "hardhat flatten"
+    "flatten": "hardhat flatten",
+    "node": "hardhat node",
+    "test": "hardhat test"
   },
   "keywords": [],
   "author": "",
