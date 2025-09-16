@@ -1,7 +1,7 @@
 {
   "name": "perps-dex-contracts",
   "version": "1.0.0",
-  "description": "",
+  "description": "perps dex contracts",
   "main": "index.js",
   "scripts": {
     "build": "hardhat build",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-ignition": "^3.0.3",
     "@nomicfoundation/hardhat-toolbox-viem": "^5.0.0",
-    "@types/node": "^22.18.3",
+    "@types/node": "^24.5.0",
     "forge-std": "github:foundry-rs/forge-std#v1.9.4",
     "hardhat": "^3.0.6",
     "typescript": "~5.8.3",
