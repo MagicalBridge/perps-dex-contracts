@@ -1,7 +1,7 @@
 {
-  "name": "perps-dex-contracts",
-  "version": "1.0.0",
-  "description": "perps dex contracts",
+  "name": "perp-dex-contracts",
+  "version": "0.1.0",
+  "description": "perp dex contracts",
   "main": "index.js",
   "scripts": {
     "build": "hardhat build",
