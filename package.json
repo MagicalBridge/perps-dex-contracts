@@ -8,7 +8,10 @@
     "clean": "hardhat clean",
     "flatten": "hardhat flatten",
     "node": "hardhat node",
-    "test": "hardhat test"
+    "test": "hardhat test",
+    "deploy:arbitrum-sepolia": "hardhat ignition deploy ignition/modules/Bridge2.ts --network arbitrumSepolia",
+    "deploy:arbitrum-sepolia:verify": "hardhat ignition deploy ignition/modules/Bridge2.ts --network arbitrumSepolia --verify",
+    "verify:arbitrum-sepolia": "hardhat verify --network arbitrumSepolia"
   },
   "keywords": [],
   "author": "",

@@ -36,6 +36,30 @@ const config: HardhatUserConfig = {
       url: configVariable("SEPOLIA_RPC_URL"),
       accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
     },
+    arbitrumSepolia: {
+      type: "http",
+      chainType: "l2",
+      url: configVariable("ARBITRUM_SEPOLIA_RPC_URL", {
+        default: "https://sepolia-rollup.arbitrum.io/rpc",
+      }),
+      accounts: [configVariable("PRIVATE_KEY")],
+      chainId: 421614,
+    },
+  },
+  etherscan: {
+    apiKey: {
+      arbitrumSepolia: configVariable("ARBISCAN_API_KEY", { default: "" }),
+    },
+    customChains: [
+      {
+        network: "arbitrumSepolia",
+        chainId: 421614,
+        urls: {
+          apiURL: "https://api-sepolia.arbiscan.io/api",
+          browserURL: "https://sepolia.arbiscan.io",
+        },
+      },
+    ],
   },
 };
 
