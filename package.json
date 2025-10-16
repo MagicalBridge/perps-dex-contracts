@@ -4,31 +4,37 @@
   "description": "perp dex contracts",
   "main": "index.js",
   "scripts": {
-    "build": "hardhat build",
+    "compile": "hardhat compile",
     "clean": "hardhat clean",
     "flatten": "hardhat flatten",
     "node": "hardhat node",
     "test": "hardhat test",
-    "deploy:arbitrum-sepolia": "hardhat ignition deploy ignition/modules/Bridge2.ts --network arbitrumSepolia",
-    "deploy:arbitrum-sepolia:verify": "hardhat ignition deploy ignition/modules/Bridge2.ts --network arbitrumSepolia --verify",
-    "verify:arbitrum-sepolia": "hardhat verify --network arbitrumSepolia"
+    "deploy:arbitrum-sepolia": "hardhat run scripts/deploy.ts --network arbitrumSepolia",
+    "verify:arbitrum-sepolia": "hardhat run scripts/verify.ts --network arbitrumSepolia"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
-    "@openzeppelin/contracts": "4.7.3",
-    "@arbitrum/nitro-contracts": "1.1.0"
+    "@arbitrum/nitro-contracts": "1.1.0",
+    "@openzeppelin/contracts": "4.7.3"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-ignition": "^3.0.3",
-    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.0",
-    "@types/node": "^24.5.0",
-    "forge-std": "github:foundry-rs/forge-std#v1.9.4",
-    "hardhat": "^3.0.6",
-    "typescript": "~5.8.3",
-    "viem": "^2.37.6"
-  },
-  "type": "module"
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@nomicfoundation/hardhat-verify": "^2.0.11",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@typechain/ethers-v5": "^11.1.2",
+    "@typechain/hardhat": "^7.0.0",
+    "@types/node": "^18.19.3",
+    "chai": "^4.3.7",
+    "dotenv": "^16.3.1",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.19.5",
+    "hardhat-gas-reporter": "^1.0.9",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.3.3"
+  }
 }

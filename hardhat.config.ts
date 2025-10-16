@@ -1,19 +1,36 @@
-import type { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomiclabs/hardhat-ethers";
+import "@nomicfoundation/hardhat-verify";
+import "@nomicfoundation/hardhat-chai-matchers";
+import "@typechain/hardhat";
+import "hardhat-gas-reporter";
+import * as dotenv from "dotenv";
 
-import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
-
-// Helper function to ensure private key has 0x prefix
-function ensureHexPrefix(key: string | undefined): string | undefined {
-  if (!key) return undefined;
-  return key.startsWith('0x') ? key : `0x${key}`;
-}
+// 加载环境变量
+dotenv.config();
 
 const config: HardhatUserConfig = {
-  // @ts-ignore - etherscan config from toolbox-viem
-  etherscan: {
-    apiKey: {
-      arbitrumSepolia: process.env.ARBISCAN_API_KEY || "",
+  solidity: {
+    version: "0.8.9",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
     },
+  },
+  networks: {
+    hardhat: {
+      chainId: 31337,
+    },
+    arbitrumSepolia: {
+      url: process.env.ARBITRUM_SEPOLIA_RPC_URL || "https://sepolia-rollup.arbitrum.io/rpc",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      chainId: 421614,
+    },
+  },
+  etherscan: {
+    apiKey: process.env.ARBISCAN_API_KEY || "",
     customChains: [
       {
         network: "arbitrumSepolia",
@@ -25,45 +42,18 @@ const config: HardhatUserConfig = {
       },
     ],
   },
-  plugins: [hardhatToolboxViemPlugin],
-  solidity: {
-    profiles: {
-      default: {
-        version: "0.8.9",
-      },
-      production: {
-        version: "0.8.9",
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 200,
-          },
-        },
-      },
-    },
+  sourcify: {
+    enabled: false,
   },
-  networks: {
-    hardhatMainnet: {
-      type: "edr-simulated",
-      chainType: "l1",
-    },
-    hardhatOp: {
-      type: "edr-simulated",
-      chainType: "op",
-    },
-    sepolia: {
-      type: "http",
-      chainType: "l1",
-      url: process.env.SEPOLIA_RPC_URL || "https://rpc.sepolia.org",
-      accounts: process.env.SEPOLIA_PRIVATE_KEY ? [ensureHexPrefix(process.env.SEPOLIA_PRIVATE_KEY)!] : [],
-    },
-    arbitrumSepolia: {
-      type: "http",
-      chainType: "generic",
-      url: process.env.ARBITRUM_SEPOLIA_RPC_URL || "https://sepolia-rollup.arbitrum.io/rpc",
-      accounts: process.env.PRIVATE_KEY ? [ensureHexPrefix(process.env.PRIVATE_KEY)!] : [],
-      chainId: 421614,
-    },
+  paths: {
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts",
+  },
+  typechain: {
+    outDir: "typechain-types",
+    target: "ethers-v5",
   },
 };
 
