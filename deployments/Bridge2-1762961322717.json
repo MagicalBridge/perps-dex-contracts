@@ -1,0 +1,27 @@
+{
+  "network": "arbitrumSepolia",
+  "chainId": 421614,
+  "contractAddress": "0x4129bC27fa4A8c963234E10AB7218eb4D5331A7A",
+  "deployerAddress": "0x922dB1A931327CA2680343eD2d5E4541669701e9",
+  "transactionHash": "0x40bcf8abf7ef63bc70d88a70d5b3a3b7feccbd27f29a6516be725c10491723a3",
+  "blockNumber": 214497440,
+  "timestamp": "2025-11-12T15:28:42.717Z",
+  "constructorArgs": {
+    "hotAddresses": [
+      "0x7437D6C9752A662B66944Dca31fAa25559dC8c78",
+      "0x061dF9043ae67FdbbbfafBA99e8a1D94874dD908"
+    ],
+    "coldAddresses": [
+      "0x3Bcf5C9C9265ee82EA21abC373C4f61953e07B7D",
+      "0x915d601382a182871B48666Dc1710B5dd762d7fE"
+    ],
+    "powers": [
+      "100",
+      "100"
+    ],
+    "usdcAddress": "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d",
+    "disputePeriodSeconds": "86400",
+    "blockDurationMillis": "250",
+    "lockerThreshold": "2"
+  }
+}
